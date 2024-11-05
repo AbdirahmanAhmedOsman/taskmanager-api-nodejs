@@ -48,6 +48,6 @@ exports.updateTask =(req,res)=>{
 
 exports.deleteTask =(req, res)=>{
     res.end(JSON.stringify({
-        message : 'Not yet implemented'
+        message : 'Not yet implement'
     })) 
 }
