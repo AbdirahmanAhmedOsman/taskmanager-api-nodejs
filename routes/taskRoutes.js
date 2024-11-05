@@ -10,7 +10,9 @@ const taskRoutes= (req, res)=>{
     }else{
         res.writeHeade(404, 'Data Not Found', {'content-type': 'application/json'})
         res.end(JSON.stringify({
-            message :" Unknown Method Require"
+            message :" Unknown Method Required."
         }))
     }
 }
+
+module.exports = taskRoutes
