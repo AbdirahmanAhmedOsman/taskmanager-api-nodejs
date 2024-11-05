@@ -1,5 +1,6 @@
 const {IncomingForm} = require('formidable');
-const { readTasksFromFile } = require("../utils/fileHandler")
+const { readTasksFromFile, writeTasksToFile } = require("../utils/fileHandler")
+const {copyFileSync}= require('fs');
 
 exports.getTasks=(req,res)=>{
     const tasks= readTasksFromFile();
@@ -23,8 +24,15 @@ exports.createTask =(req, res)=>{
             title : fields.title,
             description : fields.description || "",
             status : fields.status || 'pending',
-            image: files.image? `/uploads/${files.image.name}`
+            image: files.image? `/uploads/${files.image.name}`: null,
+
+        }
+        tasks.push(newTask)
+        writeTasksToFile(tasks);
+        if(files.image){
+            copyFileSync(files.image.path, '../uploads' + files.image.name)
         }
     })
+
 
 }
