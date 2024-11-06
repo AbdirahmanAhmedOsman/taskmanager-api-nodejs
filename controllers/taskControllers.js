@@ -26,14 +26,14 @@ exports.createTask =(req, res)=>{
             title : fields.title,
             description : fields.description || "",
             status : fields.status || 'pending',
-            image: image ? `/uploads/${image.newFilename}`: null,
+            image: image ? `/uploads/${image.originalFilename}`: null,
 
         }
         tasks.push(newTask)
         writeTasksToFile(tasks);
         console.log(files.image.name)
         if(files.image){
-            copyFileSync(image.filepath, path.join(__dirname,'../uploads', image.newFilename));
+            copyFileSync(image.filepath, path.join(__dirname,'../uploads', image.originalFilename));
             res.end(JSON.stringify(newTask))
         }
     })
