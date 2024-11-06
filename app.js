@@ -1,7 +1,7 @@
 const http = require('http');
 const taskRoutes = require('./routes/taskRoutes');
 
-const hostname= 'localost';
+const hostname= 'localhost';
 const port = 9000
 
 const server = http.createServer((req,res) =>{
@@ -17,5 +17,5 @@ const server = http.createServer((req,res) =>{
 });
 
 server.listen(port,hostname, ()=>{
-    console.log(`Server running on port ${post}`)
+    console.log(`Server running on port ${port}`)
 })
